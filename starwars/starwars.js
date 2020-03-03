@@ -1,19 +1,36 @@
-import {people} from '../data/films'
+import {films} from '../data/films.js'
+import {people} from '../data/people.js'
+console.log(people.length)
 console.log("Hi there! My first JavaScript code!")
-console.log(document.querySelector('.greeting'))
+console.log(document.querySelector('.greeting')
 let greetingDiv = document.querySelector ('.greeting')
+let castList = document.querySelector ('.greeting')
+let counter = 1
 
-greetingDiv.textConcent = "Star Wars Cast"
-people.forEach ((person)=>{
-    console.log(person)
+function populateDom(characters) people.forEach (person=>{
+let nameItem = document.createElement("li")
+    nameItem.textContent = person.name
+    castList.appendChild(nameItem)
+    
+let personAnchor = document.createElement("a")
+    personAnchor.href = "#"
+let personImg = document.createELement ("img")
+  personImg.src = 'https://starwars-visualguide.com/assets/img/characters/${counter.jpg'
+
+  personImg.addEventsListener ('error',{event}=> {personImg.hidden=true
+    //personImg.src = '../images/uvu.jpeg'
 })
-let people = document.createElement ("ul")
-let itemOne = document.createElement ("li")
-let itemTwo = document.createElement ("li")
-let itemThree = document.createElement ("li")
-let itemFour = document.createElement ("li")
+personImg.addEventListener("click", function ( event ) {
+    console.log('thanks for clicking!')
+    let maleButton = document.querySelector('#maleButton')
+    let maleButton = document.querySelector('#femaleButton')
+    let maleButton = document.querySelector('#otherButton')
+    maleButton.addEventListener ("click", function ( event){
+        console.log ('thanks for clicking!')
+    })
 
-castList.appendChild(itemOne)
-castList.appendChild(itemTwo
-castList.appendChild(itemThree)
-castList.appendChild(itemFour)
+personAnchor.appendChild(personImg)
+greetingDiv.appendChild(personAnchor)
+counter++
+)}
+}
