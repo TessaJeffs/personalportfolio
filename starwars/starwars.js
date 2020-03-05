@@ -1,36 +1,61 @@
 import {films} from '../data/films.js'
 import {people} from '../data/people.js'
-console.log(people.length)
-console.log("Hi there! My first JavaScript code!")
-console.log(document.querySelector('.greeting')
-let greetingDiv = document.querySelector ('.greeting')
-let castList = document.querySelector ('.greeting')
-let counter = 1
+let galleryDiv = document.querySelector ('.greeting')
+const maleCharacters = people.filter (person => person.gender === 'male')
+const femaleCharacters = people.filter (person => person.gender === 'female')
+const otherCharacters = people.filter (
+    person => 
+    person.gender === 'n/a'||
+    person.gender === 'none' ||
+    person.gender === 'hermaphrodite',
+)
 
-function populateDom(characters) people.forEach (person=>{
-let nameItem = document.createElement("li")
-    nameItem.textContent = person.name
-    castList.appendChild(nameItem)
-    
-let personAnchor = document.createElement("a")
-    personAnchor.href = "#"
-let personImg = document.createELement ("img")
-  personImg.src = 'https://starwars-visualguide.com/assets/img/characters/${counter.jpg'
-
-  personImg.addEventsListener ('error',{event}=> {personImg.hidden=true
-    //personImg.src = '../images/uvu.jpeg'
+maleButton.addEventListener ('click', function(event){
+    populateDOM(maleCharacters)
 })
-personImg.addEventListener("click", function ( event ) {
-    console.log('thanks for clicking!')
-    let maleButton = document.querySelector('#maleButton')
-    let maleButton = document.querySelector('#femaleButton')
-    let maleButton = document.querySelector('#otherButton')
-    maleButton.addEventListener ("click", function ( event){
-        console.log ('thanks for clicking!')
-    })
+    femaleButton.addEventListener ('click', function(event){
+        populateDOM(femaleCharacters)
+})
+otherButton.addEventListener ('click', function(event){
+    populateDOM(otherCharacters)
+})
 
-personAnchor.appendChild(personImg)
-greetingDiv.appendChild(personAnchor)
-counter++
-)}
+let url = "https://swapi.co/api/people/1/"
+function getLastNumber(URL) {
+    let end =  url.lastIndexOf('/')
+    let start = end -2 
+    if (url.charAt(start) === "/"){
+        start++
+    }
+    console.log(`Start is: ${start} and end is: ${end}`)
+    console.log(url.slice(start, end))
+    return url.slice(start,end)
 }
+
+function removeChildren (element) {
+    while (element.firstChild){
+        element.removeChild(element.firstChild)
+    }
+}
+getLastNumber(url)
+function populateDOM(characters) {
+    removeChildren(gallery)
+    characters.forEach(person=> {
+        let imageNum = getLastNumber(person.url)
+        let personAnchor = document.createElement('a')
+        personAnchor.href = '#'
+        let personImg = document.createElement ('img')
+        personImg.src = `https://starwars-visualguide.com/assets/img/characters/${counter}.jpg`
+
+        personImg.addEventListener ('error', event => {
+            personImg.hidden = true
+            //person img src = '../images/uvu.jpeg'
+         })
+personImg.addEventListener("click", function (event){
+    console.log ("thanks for clicking!")
+})
+personAnchor.appendChild (personImg)
+galleryDiv.appendChild(personAnchor)
+counter++
+    })
+    }
