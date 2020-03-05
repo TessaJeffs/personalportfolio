@@ -1,5 +1,5 @@
-import {films} from '../data/films.js'
-import {people} from '../data/people.js'
+import {films} from '../../data/films.js'
+import {people} from '../../data/people.js'
 let galleryDiv = document.querySelector ('.greeting')
 const maleCharacters = people.filter (person => person.gender === 'male')
 const femaleCharacters = people.filter (person => person.gender === 'female')
