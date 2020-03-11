@@ -19,15 +19,15 @@ let femaleButton = document.querySelector('#femaleButton')
 let otherButton = document.querySelector ('#otherButton')
 
 maleButton.addEventListener ('click', function(event){
-    populateDOM(maleCharacters)
+    populateDom(maleCharacters)
 })
 
 femaleButton.addEventListener ('click', function(event){
-    populateDOM(femaleCharacters)
+    populateDom(femaleCharacters)
 })
 
 otherButton.addEventListener ('click', function(event){
-    populateDOM(otherCharacters)
+    populateDom(otherCharacters)
 })
 
 function getLastNumber(url) {
@@ -68,7 +68,7 @@ function populateDom(characters) {
  })
 }
 
-populateDOM(people)
+populateDom(people)
 
    
    
